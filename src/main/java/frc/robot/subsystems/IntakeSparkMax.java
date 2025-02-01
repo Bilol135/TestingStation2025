@@ -10,26 +10,16 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 
-import org.metuchenmomentum.robot.Configs.IntakeConfigs;
+import frc.robot.Configs.IntakeConfigs;
 
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkClosedLoopController;
 
 public class IntakeSparkMax implements IntakeIO {
-    private final SparkMax pivotMotor;
     private final SparkMax intakeMotor;
 
-    private final RelativeEncoder pivotEncoder;
-    private final SparkClosedLoopController pivotController;
-
     public IntakeSparkMax() {
-        pivotMotor = new SparkMax(IntakeConstants.kIntakePivotMotorID, MotorType.kBrushless);
         intakeMotor = new SparkMax(IntakeConstants.kIntakeMotorID, MotorType.kBrushless);
-
-        
-        pivotEncoder = pivotMotor.getEncoder();
-        pivotController = pivotMotor.getClosedLoopController();
-        pivotMotor.configure(IntakeConfigs.pivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         intakeMotor.configure(IntakeConfigs.intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         
     }
@@ -39,20 +29,6 @@ public class IntakeSparkMax implements IntakeIO {
         intakeMotor.set(speed);
     }
 
-    @Override
-    public void setPivotSpeed(double speed) {
-        pivotMotor.set(speed);
-    }
-
-    @Override
-    public void setPivotPosition(double setpoint) {
-        pivotController.setReference(setpoint, ControlType.kPosition);
-    }
-
-    @Override
-    public double getPivotPosition() {
-        return pivotEncoder.getPosition();
-    }
 /* 
     @Override
     public void setP(double p) {
@@ -97,7 +73,7 @@ public class IntakeSparkMax implements IntakeIO {
 
     @Override
     public void reset() {
-        pivotEncoder.setPosition(0);
+        
     }
 }   
 

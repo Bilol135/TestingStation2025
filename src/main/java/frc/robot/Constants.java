@@ -9,17 +9,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 
 public final class Constants {
-    public static final class ClimberConstants {
-        public static final double kLeftHookRaiseSpeed = 1;
-        public static final double kLeftHookLowerSpeed = -1;
-
-        public static final double kRightHookRaiseSpeed = 1;
-        public static final double kRightHookLowerSpeed = 1;
-
-        public static final int kLeftHookMotorID = 14;
-        public static final int kRightHookMotorID = 15;
-    }
-
+/* 
     public static final class DriveConstants {
         // Allowed maximum speeds of the robot
         public static final double kMaxSpeed = 4.8; // m/s
@@ -40,6 +30,7 @@ public final class Constants {
             new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
             new Translation2d(-kWheelBase / 2, -kTrackWidth / 2)
         );
+        
 
         // Angular offsets of the modules relative to the chassis in radians
         public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
@@ -138,14 +129,14 @@ public final class Constants {
         public static final int kDrivingMotorCurrentLimit = 50; // amps
         public static final int kTurningMotorCurrentLimit = 20; // amps
     }
-
+*/
     public static final class IOConstants {
-        public static final int kDriverControllerPort = 0;
-        public static final int kOperatorControllerPort = 4;
+        public static final int kDriverControllerPort = 1;
+        public static final int kOperatorControllerPort = 0;
         public static final double kDriveDeadband = 0.05;
     }
 
-    public static final class AutoConstants {
+    /*public static final class AutoConstants {
         public static final double kMaxSpeed = 3; // m/s
         public static final double kMaxAcceleration = 3; // m/s/s
         public static final double kMaxAngularSpeed = Math.PI; // rad/s
@@ -159,7 +150,7 @@ public final class Constants {
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
             kMaxAngularSpeed, kMaxAngularAcceleration);
     }
-
+*/
     public static final class MotorConstants {
         public static final double kFreeSpeed = 5676;
     }

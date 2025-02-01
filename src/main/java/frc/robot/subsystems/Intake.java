@@ -14,14 +14,19 @@ public class Intake extends SubsystemBase{
         return run(
             () -> intake.setIntakeSpeed(IntakeConstants.kIntakeInSpeed));
     }
-    public void outtake(){
+    public Command outtake(){
         // Code to outtake the coral
+        return run(
+            () -> intake.setIntakeSpeed(IntakeConstants.kIntakeOutSpeed));
     }
-    public void stop(){
+    public Command IntakeStop(){
         // Code to stop the intake
+        return run(() -> intake.setIntakeSpeed(0));
+
     }
-    public void setIntakeSpeed(double speed){
+    public Command setIntakeSpeed(double speed){
         // Code to set the speed of the intake
+        return run(() -> intake.setIntakeSpeed(speed));
     }
     @Override
     public void periodic(){

@@ -6,7 +6,8 @@ import com.revrobotics.spark.config.ClosedLoopConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-import frc.robot.Constants.IntakeConstants; 
+import frc.robot.subsystems.IntakeConstants;
+import frc.robot.Constants.ModuleConstants; 
 public final class Configs {
     public static final class MAXSwerveModule {
         public static final SparkMaxConfig drivingConfig = new SparkMaxConfig();
@@ -58,58 +59,10 @@ public final class Configs {
     public static final class IntakeConfigs {
 
         public static final SparkMaxConfig intakeConfig = new SparkMaxConfig();
-        public static final SparkMaxConfig pivotConfig = new SparkMaxConfig();
-        public static final SoftLimitConfig pivotSoftLimit = new SoftLimitConfig();
         static {
-
-        pivotConfig
-                .idleMode(IdleMode.kBrake);
-        pivotConfig.closedLoop
-                .pid(IntakeConstants.kP, IntakeConstants.kI, IntakeConstants.kD)
-                .velocityFF(IntakeConstants.kFF)
-                .outputRange(IntakeConstants.kMinOutput, IntakeConstants.kMaxOutput);
-        pivotSoftLimit
-                .forwardSoftLimitEnabled(true)
-                .forwardSoftLimit((float) IntakeConstants.kIntakeShooterPosition)
-                .reverseSoftLimitEnabled(true)
-                .reverseSoftLimit((float) IntakeConstants.kIntakeGroundPosition);
         intakeConfig
                 .idleMode(IdleMode.kBrake);
         }
     }
-    public static final class shooterConfigs {
-
-        public static final SparkMaxConfig shooterConfig = new SparkMaxConfig();
-        public static final SparkMaxConfig pivotConfig = new SparkMaxConfig();
-        public static final SparkMaxConfig indexerConfig = new SparkMaxConfig();
-        public static final SoftLimitConfig pivotSoftLimit = new SoftLimitConfig();
-        static {
-
-                pivotConfig
-                        .idleMode(IdleMode.kBrake)
-                        .smartCurrentLimit(50);
-                pivotConfig.closedLoop
-                        .pid(ShooterConstants.kP, ShooterConstants.kI, ShooterConstants.kD)
-                        .outputRange(ShooterConstants.kMinOutput, ShooterConstants.kMaxOutput);
-                shooterConfig
-                        .idleMode(IdleMode.kBrake)
-                        .smartCurrentLimit(80);
-                indexerConfig
-                        .idleMode(IdleMode.kBrake)
-                        .smartCurrentLimit(20);
-        
-        } 
-     }
-     public static final class ClimberConfigs {
-
-        public static final SparkMaxConfig leftConfig = new SparkMaxConfig();
-        public static final SparkMaxConfig rightConfig = new SparkMaxConfig();
-        static {
-
-                rightConfig
-                        .idleMode(IdleMode.kBrake);
-                leftConfig
-                        .idleMode(IdleMode.kBrake);
-        } 
-     }
+    
 }
