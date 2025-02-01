@@ -29,6 +29,7 @@ public class IntakeSparkMax implements IntakeIO {
         intakeMotor.set(speed);
     }
 
+
 /* 
     @Override
     public void setP(double p) {

@@ -4,11 +4,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Constants.IOConstants;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeConstants;
 import frc.robot.subsystems.IntakeSparkMax;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -16,7 +18,7 @@ public class RobotContainer {
 
   private final Intake intake = new Intake(new IntakeSparkMax());
   XboxController Controller = new XboxController(IOConstants.kOperatorControllerPort);
-
+  DigitalInput CoralDetection = new DigitalInput(0);
 
 
   public RobotContainer() {
@@ -29,5 +31,13 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
+  }
+  @Override
+  public void robotPeriodic(){
+    if(!CoralDetection.get()){
+      intake.setIntakeSpeed(0);
+    } else {
+      intake.setIntakeSpeed(IntakeConstants.kIntakeInSpeed);
+    }
   }
 }

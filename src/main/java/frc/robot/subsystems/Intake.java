@@ -28,6 +28,7 @@ public class Intake extends SubsystemBase{
         // Code to set the speed of the intake
         return run(() -> intake.setIntakeSpeed(speed));
     }
+   
     @Override
     public void periodic(){
         // Code to run in the periodic block
