@@ -32,7 +32,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
-  @Override
+  
   public void robotPeriodic(){
     if(!CoralDetection.get()){
       intake.setIntakeSpeed(0);
